@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Kord
+{
+    double x;
+    double y;
+}Kord;
+
+Kord felezo(Kord k1, Kord k2)
+{
+    Kord a;
+    a.x = (k1.x+k2.x)/2;
+    a.y = (k2.y+k2.y)/2;
+    return a;
+}
+
+int main()
+{
+    Kord K1 ={2.2,1.6};
+    Kord K2;
+    scanf("%lf %lf",&K2.x,&K2.y);
+    Kord Felezokord = felezo(K1,K2);
+    printf("Felezopont kordinataja: [%lf;%lf]" ,Felezokord.x,Felezokord.y);
+
+}
