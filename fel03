@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <ctype.h>
+
+bool maganhangzo(char c)
+{
+    if (c=='a' || c=='e' || c=='i' || c=='o' || c=='u')
+    {
+        return true;
+    }
+    return false;
+}
+
+int main(void) {
+    char c;
+    while (scanf("%c", &c) != EOF) {
+        if (maganhangzo(tolower(c))==true)
+            printf("%cv%c", c, tolower(c));
+        else
+            printf("%c", c);
+    }
+
+    return 0;
+}
