@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+typedef struct Datum {
+    int ev, ho, nap;
+} Datum;
+
+typedef struct Versenyzo {
+    char nev[31];
+    Datum szuletes;
+    int helyezes;
+} Versenyzo;
+
+void datum_kiir(Datum d);
+
+void versenyzo_kiir(Versenyzo v);
+
+int main() {
+    Versenyzo versenyzok[5] = {
+        { "Am Erika", {1984, 5, 6}, 1 },
+        { "Break Elek", {1982, 9, 30}, 3 },
+        { "Dil Emma", {1988, 8, 25}, 2 },
+        { "Kasza Blanka", {1979, 6, 10}, 5 },
+        { "Reset Elek", {1992, 4, 5}, 4 },
+    };
+    printf("%s\n", versenyzok[0].nev);
+    printf("%d\n", versenyzok[2].helyezes);
+    datum_kiir(versenyzok[4].szuletes);
+    printf("%c\n", versenyzok[1].nev[0]);
+    printf("%s\n", versenyzok[1].helyezes <= 3 ? "Igen" : "Nem");
+    printf("%s\n", versenyzok[4].helyezes < versenyzok[3].helyezes ? "Gyorsabb" : "Nem gyorsabb");
+    printf("%s\n", versenyzok[1].szuletes.ev == versenyzok[2].szuletes.ev ? "Ugyanabban az evben szuletett" : "Masik evben szuletett");
+    versenyzo_kiir(versenyzok[1]);
+        for (int i = 0; i < 5; ++i)
+        {
+        printf("Sorszam: %d ", i);
+        versenyzo_kiir(versenyzok[i]);
+        }
+
+    return 0;
+}
+
+void datum_kiir(Datum d) {
+    printf("%d-%d-%d\n", d.ev, d.ho, d.nap);
+}
+
+void versenyzo_kiir(Versenyzo v) {
+     printf("[%d] %s: %d-%d-%d\n", v.helyezes, v.nev, v.szuletes.ev, v.szuletes.ho, v.szuletes.nap);
+}
