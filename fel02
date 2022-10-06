@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+void kocka(double x, double *a, double *v)
+{
+    *a = pow(x,2) *6;
+    *v = pow(x,3);
+
+}
+
+
+int main()
+{
+    double oldalh = 2.7;
+    double A;
+    double V;
+    kocka(oldalh,&A,&V);
+    printf("Kocka oldalhossza: %lf\n", oldalh);
+    printf("Kocka felulete: %lf\n", A);
+    printf("Kocka terfogata: %lf\n", V);
+    return 0;
+}
