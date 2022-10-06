@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+void trim(char *t0, char *t1)
+{
+    int idx = 0;
+    int s = 0;
+    bool s_v = false;
+    int e = 0;
+    while(t0[idx]!='\0')
+    {
+        if(t0[idx]!=32 && s_v==false )
+        {
+            s = idx;
+            s_v=true;
+        }
+        if(t0[idx]!=32)
+        {
+            e = idx;
+        }
+        ++idx;
+    }
+    idx = 0;
+    for(;s<e+1;++s)
+    {
+        t1[idx] = t0[s];
+        ++idx;
+    }
+    t1[++idx] = '\0';
+}
+
+int main(void)
+{
+    char t0[1000] = "             RAJOSAN    GG        ";
+    char t1[1000];
+    trim(t0,t1);
+    printf("String_1: %s\n",t0);
+    printf("String_2: %s\n",t1);
+    return 0;
+}
