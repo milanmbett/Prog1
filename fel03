@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+
+int *keres(int *t,int n, int x)
+{
+    for(int *i =t; i != t+n;++i)
+    {
+        if(*i==x)
+        {
+           return i;
+        }
+    }
+    return NULL;
+}
+
+int main(void)
+{
+    int t[11] = {1,4,27,2,5,29,6,12,6,19,233};
+
+    int x = 270;
+    int *p = *keres(t,11,x);
+
+    if(p==NULL)
+    {
+        printf("Nincs benne a tomben!");
+    }
+    else{
+        printf("%p cimen van!", &p);
+    }
+
+    return 0;
+}
