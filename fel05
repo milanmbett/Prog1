@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+
+void f (char *t)
+{
+    int idx = 0;
+    while(t[idx]!=0)
+    {
+        printf("%c\n",t[idx]);
+        ++idx;
+    }
+}
+
+
+int main(void)
+{
+    printf("Kerek egy nevet! : ");
+    char nev[1000];
+    scanf("%s",&nev);
+    f(nev);
+    return 0;
+}
