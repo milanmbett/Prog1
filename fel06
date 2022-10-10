@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void kiir(int n)
+{
+    if (n <1000)
+    {
+        printf("%d", n);
+        return;
+    }
+    kiir(n / 1000);
+    printf(" %03d", n % 1000);
+}
+int main(void) {
+    kiir(1000222);
+
+    return 0;
+}
