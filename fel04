@@ -1,0 +1,29 @@
+#include <stdio.h>
+ 
+/*Az iteratív függvények triviálisak*/
+ 
+void tomb_kiir_elore(int t[], int n) {
+    if(n > 0) {                    /* Ha van benne elem */
+        printf("%d ", t[0]);       /* Kiírjuk az első elemet */
+        tomb_kiir_elore(t+1, n-1); /* Meghívjuk ugyanezt a függvényt, csak a tömb következő */
+                                   /* elemétől kezdve és eggyel kisebb mérettel */
+    }
+}
+ 
+void tomb_kiir_hatra(int t[], int n) {
+    if(n > 0) {                    /* Ha van benne elem */
+        tomb_kiir_hatra(t+1, n-1); /* Meghívjuk ezt a függvényt, egyel kisebb méret */
+        printf("%d ", t[0]);       /* Kiírjuk az első elemet */
+    }
+}
+ 
+int main(void) {
+    int t5[] = {1,2,3,4,5}, t10[] = {1,2,3,4,5,6,7,8,9,10};
+    
+    tomb_kiir_elore(t5, 5); printf("\n");
+    tomb_kiir_hatra(t5, 5); printf("\n");
+    tomb_kiir_elore(t10, 10); printf("\n");
+    tomb_kiir_hatra(t10, 10); printf("\n");
+    
+    return 0;
+}
