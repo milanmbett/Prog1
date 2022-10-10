@@ -1,0 +1,32 @@
+#include <stdio.h>
+ 
+/* Ez a függvény r<=10 számrendszerekre működik */
+void atvalt(int n, int r) {
+    /* Ha n nem osztható az alapszámmal, akkor rekurzívan meghívjuk a függvényt */
+    if (n / r > 0)
+        atvalt(n / r, r);
+    /* Majd kiírjuk a maradékot */
+    printf("%d", n % r);
+}
+ 
+/* Ez a teljes angol ABC-t fel tudja használni (36-os számrendszerig) */
+void atvalt2(int n, int r) {
+    /* Ha n osztható az alapszámmal, akkor rekurzívan meghívjuk a függvényt */
+    if (n / r > 0)
+        atvalt2(n / r, r);
+    /* Majd kiírjuk a maradékot */
+    if (n % r < 10)
+        printf("%c", n % r + '0');
+    else
+        printf("%c", n % r - 10 + 'A');
+}
+ 
+int main(void) {
+    atvalt(27, 5);  /* 102 */
+    printf("\n");
+    atvalt(13, 2);  /* 1101 */
+    printf("\n");
+    atvalt2(64519, 16);  /* FC07 */
+ 
+    return 0;
+}
