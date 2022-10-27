@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    printf("Kerek egy szoveget!\n");
+    int n = 0;
+    char *t = (char*) malloc(sizeof(char) * n+1);
+    t[0] = '\0';
+    char x;
+    while (scanf("%c", &x) == 1 && x != '\n')
+    {
+        char *tseged = (char*) malloc(sizeof(char) * (n+1+1));
+        for (int i = 0; i < n; ++i)
+        {
+            tseged[i] = t[i];
+        }
+        free(t);
+        t = tseged;
+        tseged[n] = x;
+        tseged[n+1] = '\0';
+        ++n;
+    }
+
+    printf("%s", t);
+
+    free(t);
+
+    return 0;
+}
