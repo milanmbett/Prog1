@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char * resz(char *tk, int k, int v)
+{
+    int tk_n = strlen(tk);
+    if(k<0)
+    {
+        k = 0;
+    }
+    if(v>tk_n)
+    {
+        v = tk_n;
+    }
+    int seged_n = v-k;
+
+    char *seged = (char*)malloc((seged_n+1)*sizeof(char));
+
+    memcpy(seged, tk +k, seged_n*sizeof(char));
+    seged[seged_n] = '\0';
+    return seged;
+}
+
+
+int main()
+{
+    char *t = resz("hello, vilag",3,9);
+    printf("%s\n",t);
+    free(t);
+    return 0;
+}
