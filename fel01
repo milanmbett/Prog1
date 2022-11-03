@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char * masolat(char *t)
+{
+    int n = strlen(t);
+    char *seged = (char*)malloc((n+1) * sizeof(char));
+    strcpy(seged,t);
+    return seged;
+}
+int main()
+{
+    char *t = masolat("asdadsdasas1");
+    printf("%s\n",t);
+    free(t);
+    return 0;
+}
