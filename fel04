@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+char *elhagy(char *tk, int k, int v)
+{
+    int tk_n = strlen(tk);
+    if(k<0)
+    {
+        k = 0;
+    }
+    if(v>tk_n)
+    {
+        v= tk_n;
+    }
+    int seged_n = tk_n - (v - k);
+
+    char *seged = (char*) malloc((seged_n + 1) * sizeof(char));
+    memcpy(seged, tk, k * sizeof(char));
+    strcpy(seged + k, tk + v);
+    return seged;
+}
+
+
+int main()
+{
+    char *t = elhagy("hello, vilag",4,8);
+    printf("%s\n",t);
+    free(t);
+    return 0;
+}
