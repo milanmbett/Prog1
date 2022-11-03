@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char * beszur(char *tmihez, int idx, char *tmit)
+{
+    int seged_n = strlen(tmihez) + strlen(tmit);
+    char * seged = (char*)malloc((seged_n+1)*sizeof(char));
+
+    seged[0] = '\0';
+    strncat(seged,tmihez,idx);
+    strcat(seged,tmit);
+    strcat(seged,tmihez+idx);
+
+    return seged;
+}
+int main()
+{
+    char *t = beszur("hello!",5,", vilag");
+    printf("%s\n",t);
+    free(t);
+    return 0;
+}
