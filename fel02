@@ -1,0 +1,131 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+typedef struct ListaElem
+{
+    int adat;
+    struct ListaElem *kov;
+} ListaElem;
+
+ListaElem *lista_letrehoz(void)
+{
+    int szamok[] = { 8, 14, 13, 17, 1, 19, 16, 5, 3, 11, 2,
+                     15, 9, 10, 6, 22, 4, 7, 18, 27, -1 };
+    ListaElem *lis = NULL;
+
+    for (int i = 0; szamok[i] != -1; ++i) {
+        ListaElem *u;
+        u = (ListaElem*) malloc(sizeof(ListaElem));
+        u->kov = lis;
+        u->adat = szamok[i];
+        lis = u;
+    }
+    return lis;
+}
+void lista_kiir(ListaElem * eleje)
+{
+    ListaElem * iter = eleje;
+    while(iter!=NULL)
+    {
+        printf("%d ",iter->adat);
+        iter = iter->kov;
+    }
+}
+int lista_hossz(ListaElem * eleje)
+ {
+     int n = 0;
+     ListaElem * iter = eleje;
+     while(iter!=NULL)
+     {
+         ++n;
+         iter = iter->kov;
+     }
+     return n;
+ }
+void lista_felszabadit(ListaElem * eleje)
+{
+    ListaElem * iter = eleje;
+    while(iter!=NULL)
+    {
+        ListaElem * seged = iter->kov;
+        free(iter);
+        iter = seged;
+    }
+}
+
+ListaElem *lista_elejere_beszur(ListaElem * eleje, int x)
+{
+    ListaElem * uj = (ListaElem*)malloc(sizeof(ListaElem));
+    uj->adat = x;
+    uj->kov = eleje;
+    return uj;
+}
+
+ListaElem *lista_vegere_beszur(ListaElem * eleje, int x)
+{
+    ListaElem *uj =(ListaElem*)malloc(sizeof(ListaElem));
+    uj->adat = x;
+    uj->kov = NULL;
+    if(eleje == NULL)
+    {
+        return uj;
+    }
+    else
+    {
+        ListaElem * iter = eleje;
+        while(iter->kov!=NULL)
+        {
+            iter = iter->kov;
+        }
+        iter->kov = uj;
+        return eleje;
+    }
+}
+
+ListaElem * lista_keres(ListaElem * eleje, int x)
+{
+    ListaElem * iter = eleje;
+    while(iter!=NULL)
+    {
+        if(iter->adat==x)
+        {
+            return iter;
+        }
+        iter = iter->kov;
+    }
+    return NULL;
+}
+
+
+int main(void) {
+    ListaElem *eleje;
+
+    eleje = NULL;
+    for(int i =0;i<10;++i)
+    {
+        eleje = lista_elejere_beszur(eleje,i);
+    }
+    for(int i=10;i<20;++i)
+    {
+        eleje = lista_vegere_beszur(eleje,i);
+    }
+    lista_kiir(eleje);
+    int n = lista_hossz(eleje);
+    printf("\nHossz: %d\n",n);
+
+    ListaElem * van = lista_keres(eleje,12);
+    if(van==NULL)
+    {
+        printf("Nincs benne!");
+    }
+    else
+    {
+        printf("Van benne!");
+    }
+
+
+    lista_felszabadit(eleje);
+
+    return 0;
+}
